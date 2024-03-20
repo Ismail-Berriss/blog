@@ -1,0 +1,21 @@
+<div class="related-posts basis-2/5">
+  <h1 class="font-bold text-4xl mb-5">Other Posts</h1>
+  <div class="other-posts">
+    <% data.forEach(post=> {
+      if (post.id !== currentPost.id) { %>
+      <a href="/post/<%= post.id %>" class="post block p-3 mb-4 bg-grey rounded-3xl">
+        <div class="h-40 mb-4">
+          <img class="w-full h-full object-cover rounded-3xl" src="imgs/uploads/<%= post.image%>" alt="post image" />
+        </div>
+        <div class="post-header px-3">
+          <h2 class="font-bold text-xl mb-2 block">
+            <%= post.title %>
+          </h2>
+          <p class="text-slate-500 line-clamp-3">
+            <%= post.content %>
+          </p>
+        </div>
+      </a>
+      <% } });%>
+  </div>
+</div>

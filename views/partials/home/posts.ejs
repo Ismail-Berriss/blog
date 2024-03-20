@@ -1,0 +1,33 @@
+<div class="posts">
+  <div class="px-4 sm:px-6 lg:px-20 my-16">
+    <div class="flex justify-between align-center mb-6">
+      <h1 class="text-2xl font-bold">Recent blog posts</h1>
+      <a href="/add-post"
+        class="px-4 py-3 flex flex-col md:flex-row items-center gap-1 bg-secondary text-white rounded-lg">
+        <i class="fa-solid fa-plus"></i>
+        <span class="whitespace-nowrap">Add Post</span>
+      </a>
+    </div>
+    <div id="posts-content" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <% for (let i=0; i < 6; i++) { %>
+        <a href="/post/<%= posts[i].id %>" class="grid-item">
+          <img src="imgs/uploads/<%= posts[i].image%>" class="mb-4 rounded-2xl h-56 w-full  object-cover" alt="">
+          <h1 class="font-bold text-2xl mb-2">
+            <%= posts[i].title %>
+          </h1>
+          <p class="text-slate-500 mb-2 line-clamp-3">
+            <%= posts[i].content %>
+          </p>
+          <p class="text-sm">
+            <%= posts[i].name %> &bull; <%= posts[i].timestamp %>
+          </p>
+        </a>
+        <% } %>
+    </div>
+    <% if (posts.length> 9) { %>
+      <div class="mt-8 text-center">
+        <button id="load-posts" class="px-4 py-3 bg-secondary text-white rounded-lg">Loading more...</button>
+      </div>
+      <% } %>
+  </div>
+</div>

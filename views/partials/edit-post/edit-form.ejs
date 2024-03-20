@@ -1,0 +1,46 @@
+<div class="form">
+  <div class="px-4 sm:px-6 lg:px-8">
+    <h1 class="text-4xl md:text-5xl font-bold mt-6 text-center">Edit post</h1>
+    <div class="form-content w-auto md:w-fit my-10 mx-auto p-5 w-fit flex flex-col items-center border rounded-md">
+      <form class="w-full" action="/post/<%= currentPost.id %>/edit/submit" method="post" enctype="multipart/form-data">
+        <% if (locals.success && locals.success==='true' ) { %>
+          <div
+            class="alert alert-success p-3 mb-2 flex justify-between items-center text-white bg-green-600 rounded-md">
+            Post edit successful!
+            <button class="close" type="button">
+              <i class="fa-solid fa-xmark fa-lg"></i>
+            </button>
+          </div>
+          <% } else if (locals.success && locals.success==='false' ) { %>
+            <div class="alert alert-danger p-3 mb-2 flex justify-between items-center text-white bg-red-500 rounded-md">
+              Edit failed. Please try again.
+              <button class="close" type="button">
+                <i class="fa-solid fa-xmark fa-lg"></i>
+              </button>
+            </div>
+            <% } %>
+              <div class="input-col mb-4 flex flex-col">
+                <label for="name" class="font-medium mb-1">Author name</label>
+                <input type="text" name="name" id="name" class="h-9 p-2 border rounded-md"
+                  value="<%= currentPost.name %>" />
+              </div>
+              <div class="input-col mb-4 flex flex-col">
+                <label for="title" class="font-medium mb-1">Title</label>
+                <input type="text" name="title" id="title" class="h-9 p-2 border rounded-md"
+                  value="<%= currentPost.title %>" />
+              </div>
+              <div class="input-col mb-4 flex flex-col">
+                <label for="content" class="font-medium mb-1">Content</label>
+                <textarea name="content" id="content" cols="30" rows="10"
+                  class="p-2 border rounded-md resize-none overflow-y-auto"><%= currentPost.content %></textarea>
+              </div>
+              <div class="input-col mb-4 flex flex-col">
+                <label for="image" class="font-medium mb-1">Upoad Image:</label>
+                <input type="file" name="image" id="image" value="<%= currentPost.image %>" />
+              </div>
+              <button type="submit" class="block w-full mt-2 px-4 py-3 text-white rounded-md bg-secondary ">Edit
+                post</button>
+      </form>
+    </div>
+  </div>
+</div>
